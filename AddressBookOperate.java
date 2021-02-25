@@ -5,24 +5,24 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class AddressBookOperate {
-    public static ArrayList<Contact> list3 = new ArrayList<>();
+    public static ArrayList<Contact> mainlist = new ArrayList<>();
     Scanner scan =new Scanner(System.in);
 
     public void view() {
-        if (list3.size() == 0) {
+        if (mainlist.size() == 0) {
             System.out.println("*No contact information!!*");
             return;
         } else {
-            Iterator<Contact> iter = list3.iterator();
+            Iterator<Contact> iter = mainlist.iterator();
             while (iter.hasNext())
                 System.out.println(iter.next());}
     }
 
     public boolean add(String checkname) {
         String check=checkname;
-        if (list3.size() == 0)
+        if (mainlist.size() == 0)
             return true;
-        for (Contact con : list3) {
+        for (Contact con : mainlist) {
             if (con.getFirstName().equals(check)) {
                 System.out.println("Contact with same name already exists !");
                 return false;
@@ -32,10 +32,10 @@ public class AddressBookOperate {
     }
 
     public boolean edit(String first, String last, String address, String city, String state,String email, String zip, String phoneNumber ) {
-        if (list3.size() == 0)
+        if (mainlist.size() == 0)
             return false;
         int count = 0;
-        for (Contact con : list3) {
+        for (Contact con : mainlist) {
             count++;
             if (con.getFirstName().equals(first) && con.getLastName().equals(last)) {
                 con.setAddress(address);
@@ -44,7 +44,7 @@ public class AddressBookOperate {
                 con.setzip(zip);
                 con.setphoneNumber(phoneNumber);
                 con.setemail(email);
-                list3.set(count-1, con);
+                mainlist.set(count-1, con);
                 return true;
             }
         }
@@ -53,13 +53,13 @@ public class AddressBookOperate {
         return false;
     }
     public boolean delete(String first,String last) {
-        if (list3.size() == 0)
+        if (mainlist.size() == 0)
             return false;
         int count=0;
-        for (Contact con : list3) {
+        for (Contact con : mainlist) {
             count++;
             if (con.getFirstName().equals(first) && con.getLastName().equals(last)) {
-                list3.remove(count - 1);
+                mainlist.remove(count - 1);
                 System.out.println("Deleted successful");
                 return true;
             }
@@ -69,11 +69,11 @@ public class AddressBookOperate {
     }
 
     public boolean searchPerson(String city, String state) {
-        if(list3.size()==0)
+        if(mainlist.size()==0)
             return false;
         int count = 0;
         int num = 0;
-        for(Contact con : list3) {
+        for(Contact con : mainlist) {
             count ++;
             if(con.getcity().equals(city) || con.getState().equals(state)) {
                 System.out.println(con);
