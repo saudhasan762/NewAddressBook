@@ -46,7 +46,7 @@ public class AddressBook extends AddressBookOperate {
 
     }
     public static void details(ArrayList<Contact> list) {
-        list3 = list;
+        mainlist = list;
         int numOfPerson = 0;
         AddressBook Book = new AddressBook();
         boolean flag=true;
@@ -78,7 +78,7 @@ public class AddressBook extends AddressBookOperate {
                         System.out.println("Enter email for Person "+i);
                         String email = new Scanner(System.in).nextLine();
                         Contact con = new Contact(first,last,address,city,state,zip,phoneNumber,email);
-                        list3.add(con);
+                        mainlist.add(con);
                         System.out.println("Added Succesfully");
                     }
                     break;
