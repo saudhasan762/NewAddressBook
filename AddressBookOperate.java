@@ -79,7 +79,7 @@ public class AddressBookOperate {
                 System.out.println(con);
                 num++;
             }
-            System.out.println("Number of Contacts: "+num);
+            System.out.println("Number of Contacts with same city and name: "+num);
             return true;
         }
         System.out.println("Contact does not exist");
