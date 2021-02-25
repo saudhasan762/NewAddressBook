@@ -1,11 +1,10 @@
 package com.address;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBookOperate {
     public static ArrayList<Contact> mainlist = new ArrayList<>();
+    public static Set<Contact> joined = new LinkedHashSet<>();
     Scanner scan =new Scanner(System.in);
 
     public void view() {
@@ -68,7 +67,7 @@ public class AddressBookOperate {
         return true;
     }
 
-    public boolean searchPerson(String city, String state) {
+    public static boolean searchPerson(String city, String state) {
         if(mainlist.size()==0)
             return false;
         int count = 0;
