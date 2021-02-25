@@ -21,6 +21,7 @@ public class AddressBook extends AddressBookOperate {
                 System.out.println("! Welcome to the Address Book System !");
                 System.out.println("Enter 1 to work on AddressBook1");
                 System.out.println("Enter 2 to work on AddressBook2");
+                System.out.println("Enter 3 to search for a Contact");
                 System.out.println("Enter 0 to exit System");
                 int choice = new Scanner(System.in).nextInt();
                 if(choice == 1) {
@@ -33,18 +34,40 @@ public class AddressBook extends AddressBookOperate {
                     details(list2);
                     break;
                 }
-                else if(choice == 0) {
-                    System.out.println("Exit System");
+
+                else if(choice == 3) {
+
+                    joined.addAll(list1);
+                    joined.addAll(list2);
+                  /*  Iterator<Contact> itr = joined.iterator();
+                    while(itr.hasNext()){
+                        System.out.println(itr.next());
+                    }*/
+
+                    if(joined.size()==0){
+                        System.out.println("No contacts");
+                    }
+                    System.out.println("Enter city name");
+                    String checkcity = new Scanner(System.in).nextLine();
+                    System.out.println("Enter state name: ");
+                    String checkstate = new Scanner(System.in).nextLine();
+                    int num = 0;
+                    for(Contact con : joined) {
+                        if (con.getcity().equals(checkcity) || con.getState().equals(checkstate)) {
+                            System.out.println(con+"");
+                            num++;
+                        }
+                    }
+                    System.out.println("Number of Contacts with same city and state: " + num);
+                    break;
+                } else if(choice == 0) {
+                    System.out.println("System Exit");
                     break s;
                 }
-                else
-                    System.out.println("Invalid Choice");
-                break;
             }
         }
-
-
     }
+
     public static void details(ArrayList<Contact> list) {
         mainlist = list;
         int numOfPerson = 0;
