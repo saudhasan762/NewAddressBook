@@ -4,21 +4,20 @@ import java.util.*;
 
 public class AddressBook extends AddressBookOperate {
     public static void main(String[] args) {
-        System.out.println("List of Address books");
+        System.out.println("! Welcome to the Address Book System !");
+        System.out.println("List of Address books: ");
         Map<String, ArrayList<Contact>> map = new HashMap<>();
         ArrayList<Contact> list1 = new ArrayList<>();
         ArrayList<Contact> list2 = new ArrayList<>();
         map.put("AddressBook1", list1);
         map.put("AddressBook2", list2);
         for(Map.Entry m : map.entrySet()) {
-            System.out.println(m.getKey()+ " " +m.getValue());
+            System.out.println("! "+m.getKey()+" !");
         }
 
-        boolean f = true;
         s: while(true)
         {
-            s2: while(f == true) {
-                System.out.println("! Welcome to the Address Book System !");
+             while(true) {
                 System.out.println("Enter 1 to work on AddressBook1");
                 System.out.println("Enter 2 to work on AddressBook2");
                 System.out.println("Enter 3 to search for a Contact");
@@ -36,13 +35,8 @@ public class AddressBook extends AddressBookOperate {
                 }
 
                 else if(choice == 3) {
-
                     joined.addAll(list1);
                     joined.addAll(list2);
-                  /*  Iterator<Contact> itr = joined.iterator();
-                    while(itr.hasNext()){
-                        System.out.println(itr.next());
-                    }*/
 
                     if(joined.size()==0){
                         System.out.println("No contacts");
@@ -53,7 +47,7 @@ public class AddressBook extends AddressBookOperate {
                     String checkstate = new Scanner(System.in).nextLine();
                     int num = 0;
                     for(Contact con : joined) {
-                        if (con.getcity().equals(checkcity) || con.getState().equals(checkstate)) {
+                        if (con.getCity().equals(checkcity) || con.getState().equals(checkstate)) {
                             System.out.println(con+"");
                             num++;
                         }
@@ -64,25 +58,26 @@ public class AddressBook extends AddressBookOperate {
                     System.out.println("System Exit");
                     break s;
                 }
+                else
+                    System.out.println("Invalid Choice");
             }
         }
     }
 
     public static void details(ArrayList<Contact> list) {
         mainlist = list;
-        int numOfPerson = 0;
         AddressBook Book = new AddressBook();
-        boolean flag=true;
-        s: while(flag == true) {
+        s: while(true) {
             int choice = Book.chooseOption();
             s2: while(true) {
                 if(choice == 1) {
+                    int numOfPerson = 0;
                     System.out.println("Enter number of Persons to add");
                     numOfPerson = new Scanner(System.in).nextInt();
                     for(int i =1;i <=numOfPerson;i++) {
                         System.out.println("Enter the First name to check");
                         String checkname = new Scanner(System.in).nextLine();
-                        if(Book.add(checkname) == false)
+                        if(!Book.add(checkname))
                             break s2;
                         System.out.println("Enter the First name for Person "+i);
                         String first = new Scanner(System.in).nextLine();
@@ -102,7 +97,7 @@ public class AddressBook extends AddressBookOperate {
                         String email = new Scanner(System.in).nextLine();
                         Contact con = new Contact(first,last,address,city,state,zip,phoneNumber,email);
                         mainlist.add(con);
-                        System.out.println("Added Succesfully");
+                        System.out.println("Added Successfully");
                     }
                     break;
                 }
@@ -127,8 +122,8 @@ public class AddressBook extends AddressBookOperate {
                     String phoneNumber = new Scanner(System.in).nextLine();
                     System.out.println("Enter email: ");
                     String email = new Scanner(System.in).nextLine();
-                    if(Book.edit(first,last,address, city,state,zip,phoneNumber,email) == false)
-                        break s2;
+                    if(!Book.edit(first, last, address, city, state, zip, phoneNumber, email))
+                        break;
                     else
                         System.out.println("Edited Successfully");
                     break;
@@ -138,8 +133,8 @@ public class AddressBook extends AddressBookOperate {
                     String first = new Scanner(System.in).nextLine();
                     System.out.println("Enter last name: ");
                     String last = new Scanner(System.in).nextLine();
-                    if(Book.delete(first,last) == false) {
-                        break s2;
+                    if(!Book.delete(first, last)) {
+                        break;
                     }
                     break;
                 }
@@ -149,7 +144,7 @@ public class AddressBook extends AddressBookOperate {
                     System.out.println("Enter state name: ");
                     String state = new Scanner(System.in).nextLine();
                     if(Book.searchPerson(city,state) == false) {
-                        break s2;
+                        break;
                     }
                     break;
                 }

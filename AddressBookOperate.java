@@ -10,19 +10,16 @@ public class AddressBookOperate {
     public void view() {
         if (mainlist.size() == 0) {
             System.out.println("*No contact information!!*");
-            return;
         } else {
-            Iterator<Contact> iter = mainlist.iterator();
-            while (iter.hasNext())
-                System.out.println(iter.next());}
+            for (Contact contact : mainlist) System.out.println(contact);
+        }
     }
 
     public boolean add(String checkname) {
-        String check=checkname;
         if (mainlist.size() == 0)
             return true;
         for (Contact con : mainlist) {
-            if (con.getFirstName().equals(check)) {
+            if (con.getFirstName().equals(checkname)) {
                 System.out.println("Contact with same name already exists !");
                 return false;
             }
@@ -38,17 +35,16 @@ public class AddressBookOperate {
             count++;
             if (con.getFirstName().equals(first) && con.getLastName().equals(last)) {
                 con.setAddress(address);
-                con.setcity(city);
+                con.setCity(city);
                 con.setState(state);
-                con.setzip(zip);
-                con.setphoneNumber(phoneNumber);
-                con.setemail(email);
+                con.setZip(zip);
+                con.setPhoneNumber(phoneNumber);
+                con.setEmail(email);
                 mainlist.set(count-1, con);
                 return true;
             }
         }
-        if (true)
-            System.out.println("There is no information about the contact in the system!!");
+        System.out.println("There is no information about the contact in the system!!");
         return false;
     }
     public boolean delete(String first,String last) {
@@ -70,11 +66,9 @@ public class AddressBookOperate {
     public static boolean searchPerson(String city, String state) {
         if(mainlist.size()==0)
             return false;
-        int count = 0;
         int num = 0;
         for(Contact con : mainlist) {
-            count ++;
-            if(con.getcity().equals(city) || con.getState().equals(state)) {
+            if(con.getCity().equals(city) || con.getState().equals(state)) {
                 System.out.println(con);
                 num++;
             }
@@ -92,7 +86,6 @@ public class AddressBookOperate {
         System.out.println("Enter 4 to delete contact");
         System.out.println("Enter 5 to search contact");
         System.out.println("Enter 0 to switch Address Book");
-        int n = scan.nextInt();
-        return n;
+        return scan.nextInt();
     }
 }

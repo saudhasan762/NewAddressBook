@@ -43,10 +43,10 @@ public class Contact {
     public void setAddress(String address) {
         this.address = address;
     }
-    public String getcity() {
+    public String getCity() {
         return city;
     }
-    public void setcity(String city) {
+    public void setCity(String city) {
         this.city=city;
     }
     public String getState() {
@@ -55,22 +55,22 @@ public class Contact {
     public void setState(String state) {
         this.state = state;
     }
-    public String getzip() {
+    public String getZip() {
         return zip;
     }
-    public void setzip(String zip) {
+    public void setZip(String zip) {
         this.zip=zip;
     }
-    public String getphoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
-    public void setphoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public String getemail() {
+    public String getEmail() {
         return email;
     }
-    public void setemail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
     public String toString() {
