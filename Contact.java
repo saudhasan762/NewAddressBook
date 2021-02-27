@@ -1,8 +1,6 @@
 package com.address;
 
-import java.util.Scanner;
-
-public class Contact {
+public class Contact  {
     private String first;
     private String last;
     private String address;
@@ -12,7 +10,6 @@ public class Contact {
     private String phoneNumber;
     private String email;
 
-    Scanner scan = new Scanner(System.in);
 
     Contact(String first, String last, String address, String city, String state,String email, String zip, String phoneNumber ){
         this.first = first;
@@ -25,6 +22,7 @@ public class Contact {
         this.email = email;
 
     }
+
     public String getFirstName() {
         return first;
     }
@@ -74,7 +72,9 @@ public class Contact {
         this.email = email;
     }
     public String toString() {
-        return "Contact [Name: " +this.first +"  Surname: " +this.last+ "  Address: " +this.address+"  City: " +this.city+ "  State: " +this.state+ "  Zip: " +this.zip+ "  Phone Number: " +this.phoneNumber+ "  Email: " +this.email +"]";
+        return "Contact [Name: " +this.first +"  Surname: " +this.last+ "  Address: "
+                +this.address+"  City: " +this.city+ "  State: " +this.state+ "  Zip: " +this.zip+
+                "  Phone Number: " +this.phoneNumber+ "  Email: " +this.email +"]";
     }
 
 }
