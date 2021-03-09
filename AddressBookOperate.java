@@ -7,6 +7,8 @@ public class AddressBookOperate {
     public static Set<Contact> joined = new LinkedHashSet<>();
     Scanner scan = new Scanner(System.in);
 
+    public enum IOService{CONSOLE_IO, FILE_IO, DB_IO, REST_IO}
+
     public void view() {
         if (finalist.size() == 0) {
             System.out.println("*No contact information!!*");
@@ -123,8 +125,24 @@ public class AddressBookOperate {
         System.out.println("Enter 4 to delete contact");
         System.out.println("Enter 5 to search contact");
         System.out.println("Enter 6 to sort contact");
+        System.out.println("Enter 7 to write data in a file");
+        System.out.println("Enter 8 to read data in a file");
         System.out.println("Enter 0 to switch Address Book");
         return scan.nextInt();
+    }
+
+    public void writeAddressBookInFile(IOService ioService){
+        if(ioService.equals(IOService.FILE_IO)) {
+            new AddressBookFileIO().writeData(finalist);
+            System.out.println("Data Stored successfully in a file");
+        }
+    }
+
+    public void readAddressBookInFile(IOService ioService){
+        if(ioService.equals(IOService.FILE_IO)) {
+            new AddressBookFileIO().readData();
+            System.out.println("Read successfully from a file");
+        }
     }
 
     public static void details(ArrayList<Contact> list) {
@@ -237,6 +255,12 @@ public class AddressBookOperate {
                         }
                     }
                     break;
+                } else if(choice == 7) {
+                    Book.writeAddressBookInFile(IOService.FILE_IO);
+                    break ;
+                } else if(choice == 8) {
+                    Book.readAddressBookInFile(IOService.FILE_IO);
+                    break ;
                 } else if (choice == 0) {
                     System.out.println("Return to main");
                     break s;
